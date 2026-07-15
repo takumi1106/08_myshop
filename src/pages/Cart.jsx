@@ -1,15 +1,21 @@
 // src/pages/Cart.jsx
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+// src/pages/Cart.jsx ※追加：既存のimportの下
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../firebase.js";
+
 
 export default function Cart({ cart }) {
   const [items, setItems] = useState([]);
 
-  useEffect(() => {
-    fetch("/items.json")
-      .then((res) => res.json())
-      .then((data) => setItems(data.items));
-  }, []);
+  // src/pages/Cart.jsx
+useEffect(() => {
+  getDocs(collection(db, "items")).then((snapshot) => {
+    setItems(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+  });
+}, []);
+
 
   // カートのエントリ（id・数量）に、items.jsonの商品情報を合体させる
   const rows = cart.entries

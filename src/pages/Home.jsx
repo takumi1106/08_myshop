@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import ItemCard from "../components/ItemCard.jsx";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../firebase.js";
 
 const INITIAL_COUNT = 9;
 const STEP = 9;
@@ -10,10 +12,18 @@ export default function Home({ favorites, cart }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/items.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setItems(data.items);
+    getDocs(collection(db, "items"))
+      .then((snapshot) => {
+        const itemList = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+
+        setItems(itemList);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("商品データの取得に失敗しました", error);
         setLoading(false);
       });
   }, []);
@@ -28,18 +38,24 @@ export default function Home({ favorites, cart }) {
   return (
     <div className="home">
       <h2 className="home__title">item</h2>
+
       <ul className="home__list">
         {visibleItems.map((item) => (
           <li key={item.id}>
-            <ItemCard item={item} favorites={favorites} cart={cart} />
+            <ItemCard
+              item={item}
+              favorites={favorites}
+              cart={cart}
+            />
           </li>
         ))}
       </ul>
+
       {hasMore && (
         <button
           type="button"
           className="home__more"
-          onClick={() => setVisibleCount((c) => c + STEP)}
+          onClick={() => setVisibleCount((count) => count + STEP)}
         >
           more
         </button>

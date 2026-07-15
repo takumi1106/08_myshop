@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+// src/pages/ItemDetail.jsx ※追加：既存のimportの下
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../firebase.js";
+
 
 export default function ItemDetail() {
   // URLパラメータを取得
@@ -7,16 +11,16 @@ export default function ItemDetail() {
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    fetch('/items.json')
-      .then((res) => res.json())
-      .then((data) => {
-        // URLパラメータに一致するアイテムを探す
-        const found = data.items.find((i) => i.id === id);
-        setItem(found ?? null);
-        setLoading(false);
-      });
-  }, [id]);
+  // src/pages/ItemDetail.jsx
+useEffect(() => {
+  getDocs(collection(db, "items")).then((snapshot) => {
+    const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+    const found = data.find((i) => i.id === id);
+    setItem(found ?? null);
+    setLoading(false);
+  });
+}, [id]);
+
 
   if (loading) {
     return <p className="loading">読み込み中...</p>;
