@@ -6,18 +6,26 @@ import ItemDetail from "./pages/ItemDetail.jsx";
 import About from "./pages/About.jsx";
 import Favorites from "./pages/Favorites.jsx";
 import Cart from "./pages/Cart.jsx";
+import { useFavorites } from "./hooks/useFavorites.js";
+// src/App.jsx のimportに追加
+import { useCart } from "./hooks/useCart.js";
+
 
 export default function App() {
+  const favorites = useFavorites();
+  const cart = useCart(); // 追加
+
+
   return (
     <div className="app">
-      <Header />
+      <Header cart={cart} />
       <main className="app__main">
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/items/:id" element={<ItemDetail />} />
+          <Route path="/" element={<Home favorites={favorites} cart={cart} />} />
+          <Route path="/items/:id" element={<ItemDetail favorites={favorites} cart={cart} />} />
           <Route path="/about" element={<About />} />
-          <Route path="/favorites" element={<Favorites />} />
-          <Route path="/cart" element={<Cart />} />
+          <Route path="/favorites" element={<Favorites favorites={favorites} cart={cart} />} />
+          <Route path="/cart" element={<Cart cart={cart} />} />
         </Routes>
       </main>
       <Footer />

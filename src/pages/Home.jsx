@@ -4,7 +4,7 @@ import ItemCard from "../components/ItemCard.jsx";
 const INITIAL_COUNT = 9;
 const STEP = 9;
 
-export default function Home() {
+export default function Home({ favorites, cart }) {
   const [items, setItems] = useState([]);
   const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT);
   const [loading, setLoading] = useState(true);
@@ -31,7 +31,7 @@ export default function Home() {
       <ul className="home__list">
         {visibleItems.map((item) => (
           <li key={item.id}>
-            <ItemCard item={item} />
+            <ItemCard item={item} favorites={favorites} cart={cart} />
           </li>
         ))}
       </ul>
