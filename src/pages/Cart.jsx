@@ -47,16 +47,21 @@ useEffect(() => {
           <li key={row.id} className="cart-row">
             <img src={row.image} alt={row.name} />
             <div className="cart-row__info">
-              <p>{row.name}</p>
-              <p>¥{row.price.toLocaleString()}</p>
+              <h3 className="item-card__name">{row.name}</h3>
+              <p className="item-card__price cart__price">¥{row.price.toLocaleString()}</p>
             </div>
-            <div className="cart-row__quantity">
+            <div className="cart-row__quantity item-card__quantity-picker">
               <button type="button" onClick={() => cart.update(row.id, row.quantity - 1)}>−</button>
               <span>{row.quantity}</span>
               <button type="button" onClick={() => cart.update(row.id, row.quantity + 1)}>＋</button>
             </div>
-            <p className="cart-row__subtotal">¥{(row.price * row.quantity).toLocaleString()}</p>
-            <button type="button" onClick={() => cart.remove(row.id)}>削除</button>
+            <p className="cart-row__subtotal">
+              <span className="cart-row__subtotal-label">合計金額:</span>
+              <span className="cart-row__subtotal-price">
+                ¥{(row.price * row.quantity).toLocaleString()}
+              </span>
+            </p>
+            <button className="cart-delete" type="button" onClick={() => cart.remove(row.id)}>削除</button>
           </li>
         ))}
       </ul>

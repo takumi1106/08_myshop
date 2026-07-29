@@ -13,18 +13,23 @@ export function useCart() {
     localStorage.setItem(KEY, JSON.stringify(entries));
   }, [entries]);
 
-  // 追加：すでにカートにあれば数量+1、なければ数量1で新規追加
-  const add = (id) => {
-    const found = entries.find((entry) => entry.id === id);
-    if (found) {
-      setEntries(
-        entries.map((entry) =>
-          entry.id === id ? { ...entry, quantity: entry.quantity + 1 } : entry
-        )
-      );
-    } else {
-      setEntries([...entries, { id, quantity: 1 }]);
-    }
+  // 追加：指定された数量をカートへ加算
+  const add = (id, quantity = 1) => {
+    const amount = Math.max(1, Math.floor(Number(quantity) || 1));
+
+    setEntries((currentEntries) => {
+      const found = currentEntries.find((entry) => entry.id === id);
+
+      if (found) {
+        return currentEntries.map((entry) =>
+          entry.id === id
+            ? { ...entry, quantity: (entry.quantity ?? 0) + amount }
+            : entry
+        );
+      }
+
+      return [...currentEntries, { id, quantity: amount }];
+    });
   };
 
   // 数量変更：0以下になったらカートから削除

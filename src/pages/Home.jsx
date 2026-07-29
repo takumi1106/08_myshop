@@ -37,7 +37,7 @@ export default function Home({ favorites, cart }) {
 
   return (
     <div className="home">
-      <h2 className="home__title">item</h2>
+      <h2 className="home__title">Products</h2>
 
       <ul className="home__list">
         {visibleItems.map((item) => (

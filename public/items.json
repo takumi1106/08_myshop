@@ -2,11 +2,11 @@
   "items": [
     {
       "id": "001",
-      "name": "MacBook Air M3",
+      "name": "MacBook Air M2",
       "image": "/images/item-dammy.webp",
       "price": 164800,
       "category": "ガジェット",
-      "description": "毎日使ってる相棒。軽くて持ち運びやすい。",
+      "description": "軽量で持ち運びしやすいノートPC。",
       "status": "onsale",
       "code": "MS-001",
       "color": "ミッドナイト",
@@ -14,51 +14,99 @@
     },
     {
       "id": "002",
-      "name": "無印良品のマグカップ",
+      "name": "ワイヤレスマウス",
       "image": "/images/item-dammy.webp",
-      "price": 590,
-      "category": "キッチン",
-      "description": "コーヒーもスープもこれ一つ。",
-      "status": "soldout",
+      "price": 4980,
+      "category": "ガジェット",
+      "description": "静音設計で快適に操作できるワイヤレスマウス。",
+      "status": "onsale",
       "code": "MS-002",
-      "color": "白",
-      "size": "約330ml"
+      "color": "ブラック",
+      "size": "M"
     },
     {
       "id": "003",
-      "name": "お気に入りのスニーカー",
+      "name": "デスクライト",
       "image": "/images/item-dammy.webp",
-      "price": 12800,
-      "category": "ファッション",
-      "description": "通学からちょっとしたお出かけまで。",
+      "price": 6980,
+      "category": "インテリア",
+      "description": "目に優しいLEDデスクライト。",
       "status": "onsale",
       "code": "MS-003",
       "color": "ホワイト",
-      "size": "26.5cm"
+      "size": "高さ45cm"
     },
     {
       "id": "004",
-      "name": "文庫本セット",
+      "name": "レザーペンケース",
       "image": "/images/item-dammy.webp",
-      "price": 2400,
-      "category": "本",
-      "description": "去年読んで良かった本たち。",
+      "price": 3200,
+      "category": "文房具",
+      "description": "シンプルで長く使える本革ペンケース。",
       "status": "onsale",
       "code": "MS-004",
-      "color": "カバー各色",
-      "size": "文庫判"
+      "color": "ブラウン",
+      "size": "20cm"
     },
     {
       "id": "005",
-      "name": "コーヒードリッパー",
+      "name": "二つ折り財布",
       "image": "/images/item-dammy.webp",
-      "price": 1800,
-      "category": "キッチン",
-      "description": "朝のルーティンに欠かせない道具。",
+      "price": 9800,
+      "category": "ファッション",
+      "description": "コンパクトで使いやすいレザーウォレット。",
       "status": "onsale",
       "code": "MS-005",
-      "color": "クリア",
-      "size": "1〜2杯用"
+      "color": "ブラック",
+      "size": "11cm × 9cm"
+    },
+    {
+      "id": "006",
+      "name": "ステンレスボトル",
+      "image": "/images/item-dammy.webp",
+      "price": 2480,
+      "category": "キッチン",
+      "description": "保温・保冷に対応したステンレスボトル。",
+      "status": "soldout",
+      "code": "MS-006",
+      "color": "シルバー",
+      "size": "500ml"
+    },
+    {
+      "id": "007",
+      "name": "キャンバストートバッグ",
+      "image": "/images/item-dammy.webp",
+      "price": 3980,
+      "category": "ファッション",
+      "description": "通学やお出かけに便利な大容量トートバッグ。",
+      "status": "onsale",
+      "code": "MS-007",
+      "color": "アイボリー",
+      "size": "A4対応"
+    },
+    {
+      "id": "008",
+      "name": "Bluetoothヘッドホン",
+      "image": "/images/item-dammy.webp",
+      "price": 12800,
+      "category": "ガジェット",
+      "description": "ワイヤレスで高音質なヘッドホン。",
+      "status": "onsale",
+      "code": "MS-008",
+      "color": "グレー",
+      "size": "フリー"
+    },
+    {
+      "id": "009",
+      "name": "ノートブック",
+      "image": "/images/item-dammy.webp",
+      "price": 680,
+      "category": "文房具",
+      "description": "シンプルなデザインのA5ノート。",
+      "status": "onsale",
+      "code": "MS-009",
+      "color": "ネイビー",
+      "size": "A5"
     }
   ]
 }

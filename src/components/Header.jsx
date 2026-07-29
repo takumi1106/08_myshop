@@ -7,13 +7,13 @@ export default function Header({ cart }) {
     <header className="site-header">
       <div className="site-header__inner">
         <Link to="/" className="site-header__logo">
-          Myshop
+            SHOPPER+
         </Link>
 
         <nav className="site-header__nav">
-          <Link to="/">home</Link>
-          <Link to="/about">about</Link>
-          <Link to="/favorites">favorites</Link>
+          <Link to="/">Home</Link>
+          <Link to="/about">About</Link>
+          <Link to="/favorites">Favorites</Link>
         </nav>
 
         <Link to="/cart" className="site-header__cart" aria-label="カート">
@@ -24,9 +24,9 @@ export default function Header({ cart }) {
         </Link>
       </div>
 
-      <p className="site-header__lead">
+      {/* <p className="site-header__lead">
         header部分は、自由にデザインしてください。
-      </p>
+      </p> */}
     </header>
   );
 }
