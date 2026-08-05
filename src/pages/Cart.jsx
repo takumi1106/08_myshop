@@ -8,6 +8,7 @@ import { db } from "../firebase.js";
 
 export default function Cart({ cart }) {
   const [items, setItems] = useState([]);
+  const [purchaseComplete, setPurchaseComplete] = useState(false);
 
   // src/pages/Cart.jsx
 useEffect(() => {
@@ -27,6 +28,31 @@ useEffect(() => {
 
   // 合計金額（単価 × 数量 の合計）
   const totalPrice = rows.reduce((sum, row) => sum + row.price * row.quantity, 0);
+  const canPurchase =
+    rows.length === cart.entries.length &&
+    rows.length > 0 &&
+    rows.every((row) =>
+      typeof row.stock !== "number" || row.quantity <= row.stock
+    );
+
+  const handlePurchase = () => {
+    if (!canPurchase) return;
+    if (!window.confirm(`合計¥${totalPrice.toLocaleString()}で購入しますか？`)) return;
+
+    cart.clear();
+    setPurchaseComplete(true);
+  };
+
+  if (purchaseComplete) {
+    return (
+      <div className="page-placeholder cart-complete">
+        <p className="cart-complete__eyebrow">ORDER COMPLETE</p>
+        <h2>ご購入ありがとうございます</h2>
+        <p>ご注文を受け付けました。</p>
+        <Link to="/" className="cart-complete__back">商品一覧へ戻る</Link>
+      </div>
+    );
+  }
 
   if (cart.entries.length === 0) {
     return (
@@ -45,7 +71,10 @@ useEffect(() => {
       <ul className="cart-list">
         {rows.map((row) => (
           <li key={row.id} className="cart-row">
-            <img src={row.image} alt={row.name} />
+            <img
+              src={Array.isArray(row.image) ? row.image[0] : row.image}
+              alt={row.name}
+            />
             <div className="cart-row__info">
               <h3 className="item-card__name">{row.name}</h3>
               <p className="item-card__price cart__price">¥{row.price.toLocaleString()}</p>
@@ -65,7 +94,22 @@ useEffect(() => {
           </li>
         ))}
       </ul>
-      <p className="cart-total">合計：¥{totalPrice.toLocaleString()}</p>
+      <div className="cart-summary">
+        <p className="cart-total">合計：¥{totalPrice.toLocaleString()}</p>
+        {!canPurchase && rows.length > 0 && (
+          <p className="cart-summary__error">
+            在庫数を超えている商品があります。数量を変更してください。
+          </p>
+        )}
+        <button
+          type="button"
+          className="cart-purchase"
+          onClick={handlePurchase}
+          disabled={!canPurchase}
+        >
+          購入する
+        </button>
+      </div>
     </section>
   );
 }

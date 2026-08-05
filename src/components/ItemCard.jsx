@@ -6,6 +6,9 @@ export default function ItemCard({ item, favorites, cart }) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isQuantityOpen, setIsQuantityOpen] = useState(false);
   const [quantity, setQuantity] = useState(1);
+  const primaryImage = Array.isArray(item.image) ? item.image[0] : item.image;
+  const isSoldOut = item.status === "soldout" || item.stock === 0;
+  const maxQuantity = typeof item.stock === "number" ? item.stock : 99;
 
   const handleFavorite = (e) => {
     e.preventDefault(); // 親の<Link>による画面遷移を止める
@@ -38,19 +41,26 @@ export default function ItemCard({ item, favorites, cart }) {
   return (
     <Link to={`/items/${item.id}`} className="item-card">
       <div className="item-card__image">
-        <img src={item.image} alt={item.name} />
-        {item.status === "soldout" && (
+        <img src={primaryImage} alt={item.name} />
+        {isSoldOut && (
           <span className="item-card__badge">SOLD OUT</span>
         )}
       </div>
       <h3 className="item-card__name">{item.name}</h3>
-      <p className="item-card__price">¥{item.price.toLocaleString()}</p>
+      <p className="item-card__price">
+        <span>¥{item.price.toLocaleString()}</span>
+        {typeof item.stock === "number" && (
+          <span className={`item-stock${item.stock === 0 ? " is-empty" : ""}`}>
+            {item.stock === 0 ? "在庫なし" : `残り${item.stock}点`}
+          </span>
+        )}
+      </p>
       <div
         className={`item-card__btn ${isExpanded ? "is-clicked" : ""}`}
         onClick={handleButtonEffect}
         onAnimationEnd={() => setIsExpanded(false)}
       >
-        {item.status === "soldout" ? (
+        {isSoldOut ? (
           <button
             type="button"
             className="item-card__cart"
@@ -74,7 +84,7 @@ export default function ItemCard({ item, favorites, cart }) {
             <input
               type="number"
               min="1"
-              max="99"
+              max={maxQuantity}
               value={quantity}
               onClick={(e) => {
                 e.preventDefault();
@@ -82,7 +92,7 @@ export default function ItemCard({ item, favorites, cart }) {
               }}
               onChange={(e) => {
                 const nextQuantity = Number(e.target.value);
-                setQuantity(Math.min(99, Math.max(1, nextQuantity || 1)));
+                setQuantity(Math.min(maxQuantity, Math.max(1, nextQuantity || 1)));
               }}
               aria-label="カートに入れる数量"
             />
@@ -91,7 +101,7 @@ export default function ItemCard({ item, favorites, cart }) {
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                setQuantity((current) => Math.min(99, current + 1));
+                setQuantity((current) => Math.min(maxQuantity, current + 1));
               }}
               aria-label="数量を1つ増やす"
             >
@@ -111,13 +121,7 @@ export default function ItemCard({ item, favorites, cart }) {
             className="item-card__cart"
             onClick={handleOpenQuantity}
           >
-            <span
-              className="site-header__cart-icon cart-icon"
-              aria-hidden="true"
-            >
-              🛒
-            </span>
-            カートに入れる
+            ADD TO CART
           </button>
         )}
         <button

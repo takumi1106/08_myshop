@@ -48,8 +48,11 @@ export function useCart() {
   // 削除
   const remove = (id) => setEntries(entries.filter((entry) => entry.id !== id));
 
+  // カートを空にする
+  const clear = () => setEntries([]);
+
   // カート内の合計個数（ヘッダーのバッジに使う）
   const total = entries.reduce((sum, entry) => sum + entry.quantity, 0);
 
-  return { entries, add, update, remove, total };
+  return { entries, add, update, remove, clear, total };
 }

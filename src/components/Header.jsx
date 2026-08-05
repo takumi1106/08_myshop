@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export default function Header({ cart }) {
   const cartCount = cart.total;
@@ -11,9 +11,9 @@ export default function Header({ cart }) {
         </Link>
 
         <nav className="site-header__nav">
-          <Link to="/">Home</Link>
-          <Link to="/about">About</Link>
-          <Link to="/favorites">Favorites</Link>
+          <NavLink to="/" end>Home</NavLink>
+          <NavLink to="/about">About</NavLink>
+          <NavLink to="/favorites">Favorites</NavLink>
         </nav>
 
         <Link to="/cart" className="site-header__cart" aria-label="カート">

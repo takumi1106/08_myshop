@@ -2,111 +2,89 @@
   "items": [
     {
       "id": "001",
-      "name": "MacBook Air M2",
-      "image": "/images/item-dammy.webp",
-      "price": 164800,
+      "name": "ハンディファン",
+      "image": [
+        "/images/fan1.JPG",
+        "/images/fan2.JPG",
+        "/images/fan3.JPG",
+        "/images/fan4.JPG"
+      ],
+      "price": 2980,
+      "stock": 5,
       "category": "ガジェット",
-      "description": "軽量で持ち運びしやすいノートPC。",
+      "description": "コンパクトで持ち運びやすいハンディファン。外出先や通勤・通学時に活躍します。",
       "status": "onsale",
       "code": "MS-001",
+      "color": "ホワイト",
+      "size": "約18cm"
+    },
+    {
+      "id": "002",
+      "name": "MacBook Air M2",
+      "image": [
+        "/images/macPC1.JPG",
+        "/images/macPC2.JPG"
+      ],
+      "price": 164800,
+      "stock": 0,
+      "category": "ガジェット",
+      "description": "軽量で持ち運びしやすい13インチノートPC。高いパフォーマンスと長時間バッテリーが魅力です。",
+      "status": "soldout",
+      "code": "MS-002",
       "color": "ミッドナイト",
       "size": "13インチ"
     },
     {
-      "id": "002",
-      "name": "ワイヤレスマウス",
-      "image": "/images/item-dammy.webp",
-      "price": 4980,
-      "category": "ガジェット",
-      "description": "静音設計で快適に操作できるワイヤレスマウス。",
-      "status": "onsale",
-      "code": "MS-002",
-      "color": "ブラック",
-      "size": "M"
-    },
-    {
       "id": "003",
-      "name": "デスクライト",
-      "image": "/images/item-dammy.webp",
-      "price": 6980,
-      "category": "インテリア",
-      "description": "目に優しいLEDデスクライト。",
+      "name": "USB Type-C ケーブル",
+      "image": [
+        "/images/cable1.JPG",
+        "/images/cable2.JPG",
+        "/images/cable3.JPG"
+      ],
+      "price": 1480,
+      "stock": 7,
+      "category": "ガジェット",
+      "description": "急速充電・データ転送に対応したUSB Type-Cケーブルです。",
       "status": "onsale",
       "code": "MS-003",
-      "color": "ホワイト",
-      "size": "高さ45cm"
+      "color": "ブラック",
+      "size": "1m"
     },
     {
       "id": "004",
-      "name": "レザーペンケース",
-      "image": "/images/item-dammy.webp",
-      "price": 3200,
-      "category": "文房具",
-      "description": "シンプルで長く使える本革ペンケース。",
+      "name": "名刺ケース",
+      "image": [
+        "/images/business card holder1.JPG",
+        "/images/business card holder2.JPG",
+        "/images/business card holder3.JPG"
+      ],
+      "price": 3280,
+      "stock": 1,
+      "category": "ファッション",
+      "description": "シンプルなデザインでビジネスシーンに馴染む名刺ケースです。",
       "status": "onsale",
       "code": "MS-004",
-      "color": "ブラウン",
-      "size": "20cm"
+      "color": "シルバー",
+      "size": "約95×60mm"
     },
     {
       "id": "005",
-      "name": "二つ折り財布",
-      "image": "/images/item-dammy.webp",
-      "price": 9800,
-      "category": "ファッション",
-      "description": "コンパクトで使いやすいレザーウォレット。",
+      "name": "ワイヤレスイヤホン",
+      "image": [
+        "/images/earphones1.JPG",
+        "/images/earphones2.JPG",
+        "/images/earphones3.JPG",
+        "/images/earphones4.JPG"
+      ],
+      "price": 9980,
+      "stock": 6,
+      "category": "ガジェット",
+      "description": "高音質で快適な装着感のワイヤレスイヤホン。通勤・通学や作業時に最適です。",
       "status": "onsale",
       "code": "MS-005",
       "color": "ブラック",
-      "size": "11cm × 9cm"
-    },
-    {
-      "id": "006",
-      "name": "ステンレスボトル",
-      "image": "/images/item-dammy.webp",
-      "price": 2480,
-      "category": "キッチン",
-      "description": "保温・保冷に対応したステンレスボトル。",
-      "status": "soldout",
-      "code": "MS-006",
-      "color": "シルバー",
-      "size": "500ml"
-    },
-    {
-      "id": "007",
-      "name": "キャンバストートバッグ",
-      "image": "/images/item-dammy.webp",
-      "price": 3980,
-      "category": "ファッション",
-      "description": "通学やお出かけに便利な大容量トートバッグ。",
-      "status": "onsale",
-      "code": "MS-007",
-      "color": "アイボリー",
-      "size": "A4対応"
-    },
-    {
-      "id": "008",
-      "name": "Bluetoothヘッドホン",
-      "image": "/images/item-dammy.webp",
-      "price": 12800,
-      "category": "ガジェット",
-      "description": "ワイヤレスで高音質なヘッドホン。",
-      "status": "onsale",
-      "code": "MS-008",
-      "color": "グレー",
       "size": "フリー"
-    },
-    {
-      "id": "009",
-      "name": "ノートブック",
-      "image": "/images/item-dammy.webp",
-      "price": 680,
-      "category": "文房具",
-      "description": "シンプルなデザインのA5ノート。",
-      "status": "onsale",
-      "code": "MS-009",
-      "color": "ネイビー",
-      "size": "A5"
     }
   ]
 }
